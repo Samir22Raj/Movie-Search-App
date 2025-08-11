@@ -1,0 +1,143 @@
+.navbar {
+  background-color: #121212;
+  padding: 2rem 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: absolute;
+  z-index: 1000;
+  transition: all 0.5s ease-in-out;
+}
+
+.navbar.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease-in-out;
+
+  animation-name: stickyTransition;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  box-shadow: 0 2px 3px rgba(96, 96, 96, 0.1);
+}
+
+@keyframes stickyTransition {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.logo {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.nav-link:hover {
+  color: rgb(255, 0, 68);
+}
+
+/* Hamburger menu for mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .navbar-links {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-links {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Navbar links when the menu is open */
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: #121212;
+    flex-direction: column;
+    align-items: center;
+    display: none; /* Hide menu by default */
+  }
+
+  .navbar-links.open {
+    display: flex; /* Show menu when open */
+  }
+
+  /* Hamburger bars animation */
+
+  .bar.open:first-child {
+    transform: translateY(6px) rotate(-135deg);
+  }
+
+  .bar.open:nth-child(2) {
+    opacity: 0;
+  }
+
+  .bar.open:last-child {
+    transform: translateY(-12px) rotate(135deg);
+  }
+
+  .bar.open {
+    transition: transform 0.5s ease-in-out, opacity 0.1s ease-in-out;
+  }  
+}
